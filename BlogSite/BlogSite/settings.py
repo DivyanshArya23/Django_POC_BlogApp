@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
 import os
+import django_heroku
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -20,12 +21,12 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 't#!7g+(xn#ua&y82#+5-*5j3)abpm^_v0ldv@@y0^y95js8_mc'
-
+# SECRET_KEY = 't#!7g+(xn#ua&y82#+5-*5j3)abpm^_v0ldv@@y0^y95js8_mc'
+SECRET_KEY = 'c7b144631deca21a8337f86931cc393e07e9c068e0f7e42e'
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['myfirst-django-blog.herokuapp.com']
 
 
 # Application definition
@@ -120,6 +121,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = '/static/'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
@@ -136,3 +138,4 @@ EMAIL_HOST_USER = 'lullaal15542'#os.environ.get('EMAIL_USER')#'lullaal15542'
 EMAIL_HOST_PASSWORD ='laal15542' #os.environ.get('EMAIL_PASS')#'laal15542'
 EMAIL_POST = 587
 
+django_heroku.settings(locals())
